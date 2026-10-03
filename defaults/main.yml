@@ -22,9 +22,8 @@ unattended_upgrades_config_defaults:
   periodic_autoclean_interval: 21
   periodic_verbose: 2
   # origins
-  allowed_origins:
-  - "Debian:stable-security"
-  - "Debian:stable-updates"
+  allowed_origins: []
+  origins_pattern: []
   # blacklist
   package_blacklist: []
   # notify
