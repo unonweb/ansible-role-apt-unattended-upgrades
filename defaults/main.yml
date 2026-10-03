@@ -46,19 +46,13 @@ unattended_upgrades_config_defaults:
 
 # SYSTEMD
 # =======
-unattended_upgrades_systemd_scope: system
-unattended_upgrades_systemd_copy: []
-unattended_upgrades_systemd_template: []
-unattended_upgrades_systemd_reset: []
-unattended_upgrades_systemd_overrides: []
-unattended_upgrades_systemd_start: []
-unattended_upgrades_systemd_stop: []
-unattended_upgrades_systemd_enable: []
-unattended_upgrades_systemd_disable: []
-# apt-daily-upgrade.service
-# apt-daily-upgrade.timer
-# apt-daily.service
-# apt-daily.timer
+unattended_upgrades_systemd_units: []
+# - name: 
+#   type:
+#   state:
+#   enabled:
+#   config:
+#   overrides:
 
 # LISTCHANGES
 # ===========

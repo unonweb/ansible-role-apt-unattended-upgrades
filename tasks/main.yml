@@ -18,11 +18,13 @@
   # install
   - ansible.builtin.import_tasks: apt-unattended-upgrades-install.yml
 
-  # systemd
-  - ansible.builtin.import_tasks: apt-unattended-upgrades-systemd.yml
-
   # config
   - ansible.builtin.import_tasks: apt-unattended-upgrades-config.yml
 
   # listchanges
   - ansible.builtin.import_tasks: apt-unattended-upgrades-listchanges.yml
+
+  # systemd
+  - name: Process systemd unit configurations
+    ansible.builtin.include_tasks: apt-unattended-upgrades-systemd-unit.yml
+    loop: "{{ unattended_upgrades_systemd_units }}"
