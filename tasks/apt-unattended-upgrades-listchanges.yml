@@ -1,0 +1,17 @@
+---
+- tags: [role-apt-unattended-upgrades-listchanges]
+  when:
+    - "'apt-listchanges' in unattended_upgrades_install_apt"
+    - unattended_upgrades_listchanges_config != None
+  block:
+
+  # template listchanges
+  - name: Template {{ unattended_upgrades_listchanges_config }}
+    become: true
+    ansible.builtin.template:
+      src: "{{ unattended_upgrades_listchanges_config }}"
+      dest: /etc/apt/listchanges.conf
+      force: true # the remote file will be replaced when contents are different than the source
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r

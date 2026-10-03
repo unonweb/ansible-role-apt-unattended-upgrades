@@ -1,0 +1,16 @@
+---
+- tags: [role-apt-unattended-upgrades-config]
+  when: unattended_upgrades_config_template != None
+  block:
+
+  # template config file
+  - name: Template {{ unattended_upgrades_config_dst }}
+    become: true
+    notify: systemctl restart unattended-upgrades.service
+    ansible.builtin.template:
+      src: "{{ unattended_upgrades_config_template }}"
+      dest: "{{ unattended_upgrades_config_dst }}"
+      force: true # file will be replaced when contents are different than the source (default) 
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r
